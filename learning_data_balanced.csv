@@ -1,0 +1,17 @@
+watches_videos,prefers_audio,likes_practical,reads_notes,learning_style
+0,0,0,0,Kinesthetic
+0,0,0,1,Kinesthetic
+0,0,1,0,Kinesthetic
+0,0,1,1,Kinesthetic
+0,1,0,0,Auditory
+0,1,0,1,Auditory
+0,1,1,0,Auditory
+0,1,1,1,Auditory
+1,0,0,0,Visual
+1,0,0,1,Visual
+1,0,1,0,Visual
+1,0,1,1,Visual
+1,1,0,0,Visual
+1,1,0,1,Visual
+1,1,1,0,Visual
+1,1,1,1,Visual
