@@ -8,18 +8,13 @@ import requests
 st.set_page_config(page_title="AI Learning Agent", layout="centered")
 st.title("🤖 Intelligent Personalized Learning Agent")
 
-# =========================
-# Load ML Model
-# =========================
+
 try:
     ml_model = joblib.load("model.pkl")
 except:
     st.error("model.pkl not found! Run train_model.py first.")
     st.stop()
 
-# =========================
-# YouTube Video Fetch
-# =========================
 def get_youtube_video(topic):
     query = topic.replace(" ", "+") + "+tutorial"
     search_url = f"https://www.youtube.com/results?search_query={query}"
@@ -34,9 +29,6 @@ def get_youtube_video(topic):
 
     return None
 
-# =========================
-# User Inputs
-# =========================
 topic = st.text_input("📘 Enter the topic you want to learn:")
 
 difficulty = st.selectbox(
@@ -51,9 +43,6 @@ prefers_audio = st.radio("Do you prefer listening to lectures?", ["Yes", "No"])
 likes_practical = st.radio("Do you enjoy practical activities?", ["Yes", "No"])
 reads_notes = st.radio("Do you prefer reading notes?", ["Yes", "No"])
 
-# =========================
-# Generate Button
-# =========================
 if st.button("🚀 Generate Learning Content"):
 
     if topic.strip() == "":
@@ -76,9 +65,7 @@ if st.button("🚀 Generate Learning Content"):
 
     st.success(f"🎯 Detected Learning Style: {style}")
 
-    # =========================
-    # LLM Prompt
-    # =========================
+
     prompt = f"""
     Explain {topic} in a detailed academic way.
 
@@ -104,17 +91,14 @@ if st.button("🚀 Generate Learning Content"):
 
     explanation = response.json()["response"]
 
-    # =========================
-    # Output
-    # =========================
+
     st.header(f"📖 Learning Topic: {topic}")
     st.write(explanation)
 
-    # =========================
-    # Video (ONLY if Visual)
-    # =========================
+    
     if style.lower() == "visual" and watches_videos == "Yes":
         video_url = get_youtube_video(topic)
         if video_url:
             st.video(video_url)
+
 
